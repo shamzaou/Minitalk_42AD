@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:24:25 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/05/02 10:56:53 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/05/02 10:59:36 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int ac, char **av)
 		if (pid == -1)
 			ft_putstr_fd("INCORRECT PID. RETRY !\n", 1);
 		send_message(message, pid);
-		send_message('\n', pid);
+		send_message("\n", pid);
 	}
 	else
 	{

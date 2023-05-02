@@ -4,11 +4,11 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-HEADER = minitalk.h
+TOOLBOX = toolbox.c
 
-SERVER_SRC = server.c toolbox.c
+SERVER_SRC = server.c
 
-CLIENT_SRC = client.c toolbox.c
+CLIENT_SRC = client.c
 
 SERVER_OBJ = $(SERVER_SRC:.c=.o)
 
@@ -19,19 +19,19 @@ all: $(NAME)
 $(NAME): server client
 
 server: $(SERVER_OBJ)
-	$(CC) $(FLAGS) $(SERVER_OBJ) -o server
+	$(CC) $(FLAGS) $(SERVER_OBJ) $(TOOLBOX:.c=.o) -o server
 
-$(SERVER_OBJ): $(SERVER_SRC)
-	$(CC) $(FLAGS) -c $(SERVER_SRC)
+$(SERVER_OBJ): $(SERVER_SRC) $(TOOLBOX)
+	$(CC) $(FLAGS) -c $(SERVER_SRC) $(TOOLBOX)
 
 client: $(CLIENT_OBJ)
-	$(CC) $(FLAGS) $(CLIENT_OBJ) -o client
+	$(CC) $(FLAGS) $(CLIENT_OBJ) $(TOOLBOX:.c=.o) -o client
 
-$(CLIENT_OBJ): $(CLIENT_SRC)
-	$(CC) $(FLAGS) -c $(CLIENT_SRC)
+$(CLIENT_OBJ): $(CLIENT_SRC) $(TOOLBOX)
+	$(CC) $(FLAGS) -c $(CLIENT_SRC) $(TOOLBOX)
 
 clean:
-	rm -f $(SERVER_OBJ) $(CLIENT_OBJ)
+	rm -f $(SERVER_OBJ) $(CLIENT_OBJ) $(TOOLBOX:.c=.o)
 
 fclean: clean
 	rm -f server client

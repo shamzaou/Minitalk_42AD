@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:24:25 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/05/02 10:59:36 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/05/02 12:00:48 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,29 +44,30 @@ int	main(int ac, char **av)
 	{
 		pid = ft_atoi(av[1]);
 		if (pid == -1)
+		{	
 			ft_putstr_fd("INCORRECT PID. RETRY !\n", 1);
+			return (1);
+		}
 		send_message(message, pid);
 		send_message("\n", pid);
 	}
 	else
 	{
 		ft_putstr_fd("Two arguments required. PID and the message.\n", 1);
-		return (0);
+		return (1);
 	}
 	ft_putstr_fd(".....MESSAGE SENT TO THE SERVER.....\n", 1);
 	return (0);
 }
 
-unsigned int	ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
 	long long	result;
-	int			sign;
 	int			i;
 
 	i = 0;
-	sign = 1;
 	result = 0;
-	if (*str == 0)
+	if (*str == NULL)
 		return (-1);
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
@@ -75,9 +76,11 @@ unsigned int	ft_atoi(char *str)
 	while (str[i] && str[i] <= '9' && str[i] >= '0')
 	{
 		result = result * 10 + (str[i] - '0');
-		if (result > UINT_MAX || result < 0)
+		if (result > UINT_MAX)
 			return (-1);
 		i++;
 	}
-	return (sign * result);
+	if (result < 2)
+		return (-1);
+	return (result);
 }

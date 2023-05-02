@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:24:22 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/05/02 02:55:56 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/05/02 09:14:18 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,34 @@ static void    print_pid(void)
     write(1, "]\n",2);
 }
 
-void    signal_handler
+void    signal_handler(int signal)
+{
+    static int index = 0;
+    static char c = 0;
+
+    if (signal == SIGUSR2)
+        c |= (1 << index);
+    index++;
+    if (index == 8)
+    {
+        write(1, &c, 1);
+        index = 0;
+        c = 0;
+    }
+}
+
 int main()
 {
-    print_pid();
+    struct sigaction action;
+
+    action.sa_handler = &signal_handler;
     
+    print_pid();
+    while (1)
+    {
+        sigaction(SIGUSR1, &action, NULL);
+        sigaction(SIGUSR2, &action, NULL);
+        pause();
+    }
     
 }

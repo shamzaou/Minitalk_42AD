@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   toolbox.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamzaou <shamzaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:24:18 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/04/29 00:09:53 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/05/02 08:37:15 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,26 @@ void	ft_putnbr_fd(int n, int fd)
 	else
 		ft_putnbr_fd(n / 10, fd);
 	ft_putnbr_fd(n % 10, fd);
+}
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (!s || fd < 0)
+		return ;
+	write(fd, s, ft_strlen(s));
+}
+
+size_t	ft_strlen(const char *str)
+{
+	size_t index;
+
+	index = 0;
+	while(str[index] != '\0')
+		index++;
+	return (index);
 }

@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:24:25 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/05/02 12:00:48 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/05/03 18:42:14 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	ft_atoi(char *str)
 
 	i = 0;
 	result = 0;
-	if (*str == NULL)
+	if (str == NULL)
 		return (-1);
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;

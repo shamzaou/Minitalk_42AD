@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 10:57:46 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/05/02 10:57:47 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/05/03 18:39:36 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void			print_pid(void);
 void			signal_handler(int signal);
 void			send_message(char *message, int pid);
 
-unsigned int	ft_atoi(char *str);
+int	            ft_atoi(char *str);
 void			ft_putnbr_fd(int n, int fd);
 void			ft_putstr_fd(char *s, int fd);
 

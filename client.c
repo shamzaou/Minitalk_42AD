@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:24:25 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/05/03 18:42:14 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/05/31 19:28:59 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int	main(int ac, char **av)
 	int		pid;
 	char	*message;
 
-	message = av[2];
 	if (ac == 3)
 	{
+		message = av[2];
 		pid = ft_atoi(av[1]);
 		if (pid == -1)
 		{	

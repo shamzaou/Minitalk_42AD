@@ -6,7 +6,7 @@
 /*   By: shamzaou <shamzaou@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:24:22 by shamzaou          #+#    #+#             */
-/*   Updated: 2023/05/02 10:55:43 by shamzaou         ###   ########.fr       */
+/*   Updated: 2023/05/31 19:51:31 by shamzaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,9 @@ void	print_pid(void)
 
 void	signal_handler(int signal)
 {
-	static int	index;
-	static char	c;
+	static int	index = 0;
+	static char	c = 0;
 
-	index = 0;
-	c = 0;
 	if (signal == SIGUSR1)
 		c |= 1 << (7 - index);
 	index++;
